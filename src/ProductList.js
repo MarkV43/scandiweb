@@ -12,17 +12,20 @@ function ProductList() {
 
   useEffect(() => {
     if (!loaded) {
-      fetch('http://localhost/products')
+      fetch('https://scandiweb-back.000webhostapp.com/products')
         .then(res => res.json())
         .then(res => {
           setLoaded(true);
-          setItems(res.records);
+          console.log('HELLO', res);
+          setItems(res.records ?? []);
         }, (error) => {
           setLoaded(true);
           setError(error);
         });
     }
   }, [loaded]);
+
+  console.log({items});
 
   let selected = items
     .map(item => item.sku)
