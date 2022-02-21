@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './Header.css'
+import './AddProduct.css'
 
 function AddProduct() {
   let navigate = useNavigate();
@@ -75,54 +76,103 @@ function AddProduct() {
         <Link to="/"><button>Cancel</button></Link>
       </header>
       <form id="product_form">
-        <label htmlFor="sku">SKU: </label>
-        <input type="text" id="sku" name="sku" required/>
-        <br/>
-        <label htmlFor="name">Name: </label>
-        <input type="text" id="name" name="name" required/>
-        <br/>
-        <label htmlFor="price">Price: </label>
-        <input type="number" id="price" step="0.01" required onChange={updatePrice}/>
-        <input style={{display:'none'}} type="number" step="1" name="price" id="realPrice"/>
-        <br/>
-        <label htmlFor="productType">Type: </label>
-        <select id="productType" onChange={handleChange} name="type">
-          {
-            Object.entries(types).map(([key, value]) => {
-              return <option key={key} value={key}>{value}</option>
-            })
-          }
-        </select>
-        {
-          type === "Size" ? (
-            <div id="DVD">
-              <label htmlFor="size">Size (MB) </label>
-              <input type="number" id="size" step="1" required onChange={updateSize}/>
-            </div>
-          ) : null
-        }
-        {
-          type === "Weight" ? (
-            <div id="Book">
-              <label htmlFor="weight">Weight (Kg) </label>
-              <input type="number" id="weight" step="1" required onChange={updateWeight}/>
-            </div>
-          ) : null
-        }
-        {
-          type === "Dimension" ? (
-            <div id="Furniture">
-              <label htmlFor="height">Height (cm) </label>
-              <input type="number" id="height" step="1" required onChange={updateDimension}/>
-              <br/>
-              <label htmlFor="width">Width (cm) </label>
-              <input type="number" id="width" step="1" required onChange={updateDimension}/> 
-              <br/>
-              <label htmlFor="length">Length (cm) </label>
-              <input type="number" id="length" step="1" required onChange={updateDimension}/>
-            </div>
-          ) : null
-        }
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label htmlFor="sku">SKU: </label>
+              </td>
+              <td>
+                <input type="text" id="sku" name="sku" required/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="name">Name: </label>
+              </td>
+              <td>
+                <input type="text" id="name" name="name" required/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="price">Price: </label>
+              </td>
+              <td>
+                <input type="number" id="price" step="0.01" required onChange={updatePrice}/>
+                <input style={{display:'none'}} type="number" step="1" name="price" id="realPrice"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="productType">Type: </label>
+              </td>
+              <td>
+                <select id="productType" onChange={handleChange} name="type">
+                  {
+                    Object.entries(types).map(([key, value]) => {
+                      return <option key={key} value={key}>{value}</option>
+                    })
+                  }
+                </select>
+              </td>
+            </tr>
+            {
+              type === "Size" ? (
+                <tr>
+                  <td>
+                    <label htmlFor="size">Size (MB) </label>
+                  </td>
+                  <td>
+                    <input type="number" id="size" step="1" required onChange={updateSize}/>
+                  </td>
+                </tr>
+              ) : null
+            }
+            {
+              type === "Weight" ? (
+                <tr>
+                  <td>
+                    <label htmlFor="weight">Weight (Kg) </label>
+                  </td>
+                  <td>
+                    <input type="number" id="weight" step="1" required onChange={updateWeight}/>
+                  </td>
+                </tr>
+              ) : null
+            }
+            {
+              type === "Dimension" ? (
+                <>
+                <tr>
+                  <td>
+                    <label htmlFor="height">Height (cm) </label>
+                  </td>
+                  <td>
+                    <input type="number" id="height" step="1" required onChange={updateDimension}/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="width">Width (cm) </label>
+                  </td>
+                  <td>
+                    <input type="number" id="width" step="1" required onChange={updateDimension}/> 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="length">Length (cm) </label>
+                  </td>
+                  <td>
+                    <input type="number" id="length" step="1" required onChange={updateDimension}/>
+                  </td>
+                </tr>
+                </>
+              ) : null
+            }
+          </tbody>
+        </table>
         <input style={{display:'none'}} type="text" name="specific" id="specific"/>
       </form>
     </div>

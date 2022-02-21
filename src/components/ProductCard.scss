@@ -1,11 +1,13 @@
 .product-card {
-  border: 1px solid black;
+  // border: 1px solid black;
+  background: rgb(38, 38, 63);
   border-radius: 3px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.5));
 
   .delete-checkbox {
     position: relative;

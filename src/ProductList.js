@@ -60,7 +60,7 @@ function ProductList() {
       <header>
         <h1>Product List</h1>
         <div className="spacer"></div>
-        <button onClick={() => setLoaded(false)}>Load</button>
+        <button onClick={() => setLoaded(false)}>Reload</button>
         <Link to="/add-product"><button>ADD</button></Link>
         <button id="delete-product-btn" onClick={massDelete}>MASS DELETE</button>
       </header>
