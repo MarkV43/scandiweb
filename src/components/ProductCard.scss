@@ -1,0 +1,24 @@
+.product-card {
+  border: 1px solid black;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .delete-checkbox {
+    position: relative;
+    left: -50%;
+    top: -10px;
+  }
+
+  .product-card-content {
+    margin: 0;
+    text-align: center;
+
+    p {
+      margin: 2px;
+    }
+  }
+}

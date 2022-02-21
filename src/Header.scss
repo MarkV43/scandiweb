@@ -1,0 +1,21 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  border-bottom: 1px solid #ccc;
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  button {
+    background: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    color: #000;
+    cursor: pointer;
+  }
+}
