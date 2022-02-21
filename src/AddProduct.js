@@ -54,7 +54,7 @@ function AddProduct() {
     if (!all_filled) {
       alert("Please, submit required data");
     } else {
-      fetch('http://localhost/products', {
+      fetch('https://scandiweb-back.000webhostapp.com/products', {
         method: 'POST',
         body: data
       }).then(res => res.json() )
