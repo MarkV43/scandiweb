@@ -45,7 +45,7 @@ function ProductList() {
       .filter(([key, value]) => value)
       .map(([key, value]) => key)
       .forEach(sku => {
-        fetch(`https://scandiweb-back.000webhostapp.com/product/delete.php?sku=${sku}`)
+        fetch(`https://scandiweb-back.000webhostapp.com/products/${sku}?method=DELETE`)
           .then(res => res.json())
           .then(res => {
             setLoaded(false);
