@@ -45,24 +45,34 @@ function AddProduct() {
     let form = document.querySelector('form');
     let data = new FormData(form);
     let obj = {};
+    let body = [];
     data.forEach((value, key) => {
       obj[key] = value;
+      body.push(`${key}=${value}`);
     });
-    console.log([...data.entries()])
+    body = body.join('&');
+    console.log(body);
     let all_filled = [...data.values()]
       .map(value => !!value)
       .reduce((acc, val) => acc && val, true);
     if (!all_filled) {
       alert("Please, submit required data");
     } else {
-      fetch('https://scandiweb-back.000webhostapp.com/products', {
+      fetch(`https://scandiweb-back.000webhostapp.com/products/${obj['sku']}`, {
+      // fetch(`http://localhost:80/products/${obj['sku']}`, {
         method: 'POST',
-        body: data
+        body: body,
+        headers: { // Send header to identify the request as JSON
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
       }).then(res => res.json() )
         .then(res => {
-          navigate('/');
+          console.log(res);
+          if (!res.error && !res.message.includes('Unable')) {
+            navigate('/');
+          }
         }, error => {
-          alert(error.message);
+          console.error(error);
         });
     }
   }

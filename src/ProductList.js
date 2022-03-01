@@ -13,6 +13,7 @@ function ProductList() {
   useEffect(() => {
     if (!loaded) {
       fetch('https://scandiweb-back.000webhostapp.com/products')
+      // fetch('http://localhost/products')
         .then(res => res.json())
         .then(res => {
           setLoaded(true);
@@ -46,6 +47,7 @@ function ProductList() {
       .map(([key, value]) => key)
       .forEach(sku => {
         fetch(`https://scandiweb-back.000webhostapp.com/products/${sku}?method=DELETE`)
+        // fetch(`http://localhost/products/${sku}?method=DELETE`)
           .then(res => res.json())
           .then(res => {
             setLoaded(false);
